@@ -23,7 +23,7 @@ exports.findOne = async(req, res) => {
 
 exports.create = async(req, res) => {
   console.log("Insert one user")
-  console.log(req.body) //req.body diavazoume auta pou esteile o postman - req einai to request pou mas erxetai
+  console.log(req.body) //req.body diavazoume auta pou esteile o postman (stelnei olokliro object user) - req einai to request pou mas erxetai
   
   const newUser = new User ({
     username: req.body.username,
@@ -34,10 +34,10 @@ exports.create = async(req, res) => {
     address: req.body.address,
     phone: req.body.phone,
     products: req.body.products
-  }) //Apothikeuoume sto newUser sta pedia me to req.
+  }) //Apothikeuoume sto newUser sta pedia pou mas irthan me to req.
 
   try{
-    const result = await newUser.save() //Apothikeush sthn DB
+    const result = await newUser.save() //Apothikeush sthn DB - await = otan oloklirothei 
     res.status(200).json({data: result})
     console.log("User saved")
   } catch(err) {

@@ -19,7 +19,7 @@ exports.findOne = async(req, res) => {
 
   try {
     const result = await User.findOne({username: username}, {_id:0, username:1, products: 1})
-    res.status(200).json({data: result})
+    res.status(200).json({data: result}) //Emfanish apotelesmatwn
     console.log("Success in finding products for user", username)
   } catch(err) {
     res.status(400).json({data: err})
@@ -55,7 +55,7 @@ exports.update = async(req, res) => {
   const _id = req.body.product._id //edw epilegoume apo to JSON call pou tha kanoume 
   const quantity = req.body.product.quantity
 
-  console.log("Update product for username", username)
+  console.log("Update product for user", username)
 
   try {
     const result = await User.updateOne(
@@ -87,7 +87,7 @@ exports.delete = async(req, res) => {
       {username: username}, 
       {
         $pull: {
-          products: {_id: _id}
+          products: {_id: _id} //Svise apo products opoio exei id = id pou esteila
         }
       }
     )
