@@ -1,12 +1,17 @@
 const User = require('../models/user.model') //require oti exei ginei export sto user.model
+const logger = require('../logger/logger')
+
 
 exports.findAll = async(req, res) => {
   console.log("Find all users")
   try {
   const result = await User.find() //await giati perimenoume na girisei auto to apotelesma / User vriskei tous Users apo thn DB(mongoDB) dioti exei kanei require to user.model (const User apo panw akrivos), to opoio anaferete sthn collection Users (to exoume grapsei katw katw sto user.model)
-  res.status(200).json({data: result})
+  res.status(200).json({data: result}) 
+  logger.debug("Success in reading all users")
+  logger.info("Success in reading all users")
   } catch (err) {
     console.log(`Problem in reading users ${err}`)
+    logger.error(`Problem in reading all users , ${err}`)
   }
 }
 
