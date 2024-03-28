@@ -27,6 +27,7 @@ app.use(cors({
 
 const user = require('./routes/user.route') //Otan sou erxete klisi me /api/user (apo katw akrivos), tote kalese tis diadikasies tou user (diladi user.route)
 const userProduct = require('./routes/user.products.routes')
+const product = require('./routes/product.route')
 
 app.use('/', express.static('files'))//Klhsh se localhost - anoigei ton fakelo files Gia na ftiaksoume front end
 app.use('/api/users', user) //Otan dei /api/user - To paei ston user (pou opws vlepoume apo panw exei oles tis leitourgies tou user.route) 
@@ -37,6 +38,8 @@ app.use('/api-docs',
   swaggerUi.setup(swaggerDocument.options)
    //to options auto iparxei sto swagger.js 
                      ) 
+
+app.use('/api/products', product)
 
 // app.listen(port, () => {
 //   console.log("Server is up")
